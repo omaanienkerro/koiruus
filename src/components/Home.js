@@ -65,7 +65,7 @@ export class Home extends React.Component {
                             alignItems="center"
                         >
                             <Typography variant="h4" color="inherit" >
-                                Car Diagnosis
+                                Car Diagnosis2
                             </Typography>
                         </Grid>
 
