@@ -13,7 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import {NavLink} from "react-router-dom";
-import {IconButton} from "@material-ui/core";
+import {IconButton, Paper} from "@material-ui/core";
 
 const styles = {
     card: {
@@ -21,7 +21,10 @@ const styles = {
     },
     media: {
         height: 140,
-    },}
+    },
+text:{
+        width: "80%"
+}}
 var bgColors = { "Default": "#81b71a",
     "Blue": "#3F51B5",
     "Cyan": "#37BC9B",
@@ -33,7 +36,7 @@ export class OmatTiedot extends React.Component {
     render() {
         var text ="jotain"
         return(
-            <React.Fragment>
+            <div>
 
                 <Toolbar style={{backgroundColor: bgColors.Blue,color: bgColors.white,padding:"4.5%"}}>
                     <IconButton component={NavLink} to={"/"}><Icon style={{color:bgColors.white}}>arrow_back</Icon></IconButton>
@@ -51,120 +54,85 @@ export class OmatTiedot extends React.Component {
 
                 </Toolbar>
                 <p></p>
-                <Typography variant="h6" gutterBottom>
-                    Omat tiedot
-                </Typography>
-                <Grid container spacing={24}>
-                    <Grid item xs={12} sm={6}>
-                        <TextField
-                            required
-                            id="firstName"
-                            name="firstName"
-                            label="Etunimi"
-                            fullWidth
-                            autoComplete="fname"
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField
-                            required
-                            id="lastName"
-                            name="lastName"
-                            label="Sukunimi"
-                            fullWidth
-                            autoComplete="lname"
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField
-                            required
-                            id="email"
-                            name="email"
-                            label="Sähköposti"
-                            type="email"
-                            fullWidth
-                            autoComplete="lname"
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField
-                            required
-                            id="address1"
-                            name="address1"
-                            label="Osoite"
-                            fullWidth
-                            autoComplete="billing address-line1"
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField required id="state" name="state" label="Kaupunki" fullWidth />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField
-                            required
-                            id="zip"
-                            name="zip"
-                            label="Postinumero"
-                            fullWidth
-                            autoComplete="billing postal-code"
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField
-                            required
-                            id="country"
-                            name="country"
-                            label="Maa"
-                            fullWidth
-                            autoComplete="billing country"
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField
-                            required
-                            id="country"
-                            name="country"
-                            label="Auton rekisterinumero"
-                            fullWidth
-                            autoComplete="billing country"
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField
-                            required
-                            id="adornment-password"
-                            name="country"
-                            type="password"
-                            label="Salasana"
-                            fullWidth
-                            autoComplete="billing country"
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField
-                            required
-                            id="adornment-password"
-                            name="country"
-                            type="password"
-                            label="Salasana uudelleen"
-                            fullWidth
-                            autoComplete="billing country"
-                        />
-                    </Grid>
+                <Grid
+                    container
+                    direction="column"
+                    justify="space-between"
+                    alignItems="center"
 
-                    <Grid item xs={12}>
-                        <FormControlLabel
-                            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-                            label="Use this address for payment details"
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <Button variant="contained" color="primary">Tallenna</Button>
+                >
+
+                    <TextField
+                        required
+                        id="outlined-firstName"
+                        name="firstName"
+                        label="Etunimi"
+                        fullWidth
+                        style={styles.text}
+                        autoComplete="fname"
+                        variant="outlined"
+                    />
+<br/>
+                    <TextField
+                        required
+                        id="lastName"
+                        name="lastName"
+                        label="Sukunimi"
+                        style={styles.text}
+                        autoComplete="lname"
+                        variant="outlined"
+                    />
+                    <br/>
+                    <TextField
+                        required
+                        id="email"
+                        name="email"
+                        label="Sähköposti"
+                        type="email"
+                        style={styles.text}
+                        autoComplete="lname"
+                        variant="outlined"
+                    />
+                    <br/>
+                    <TextField
+                        required
+                        id="country"
+                        name="country"
+                        label="Auton rekisterinumero"
+                        style={styles.text}
+                        autoComplete="billing country"
+                        variant="outlined"
+                    />
+                    <br/>
+                    <TextField
+                        required
+                        id="adornment-password"
+                        name="country"
+                        type="password"
+                        label="Salasana"
+                        style={styles.text}
+                        autoComplete="billing country"
+                        variant="outlined"
+                    />
+                    <br/>
+                    <TextField
+                        required
+                        id="adornment-password"
+                        name="country"
+                        type="password"
+                        label="Salasana uudelleen"
+                        style={styles.text}
+                        autoComplete="billing country"
+                        variant="outlined"
+                    />
+                    <br/>
+                    <div style={styles.text}>
+                        <Button variant="contained" color="primary">Tallenna</Button> 	&nbsp;
                         <Button variant="contained" >Peruuta</Button>
-                    </Grid>
-                </Grid>
+                    </div>
 
-            </React.Fragment>
+                </Grid>
+            </div>
         );
     }
 }
