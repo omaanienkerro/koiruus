@@ -60,6 +60,59 @@ var bgColors = {
   white: "#fff"
 };
 
+export class Home extends React.Component {
+    render() {
+        const { classes } = this.props;
+        let testvar = true;
+        return(
+            <div>
+                <div >
+
+                    <Toolbar style={{backgroundColor: bgColors.Blue,color: bgColors.white,padding:"4.5%"}}>
+                        <Grid
+                            container
+                            direction="column"
+                            justify="center"
+                            alignItems="center"
+                        >
+                            <Typography variant="h4" color="inherit" >
+                                Car Diagnosis2
+                            </Typography>
+                        </Grid>
+
+
+                    </Toolbar>
+
+
+                    <List >
+
+                        <ListItem style={styles.list} button component={NavLink} to={"/historia"}>
+                            <ListItemIcon> <RestoreIcon /> </ListItemIcon>
+                            <ListItemText primary="Historia" />
+                        </ListItem>
+                        <Divider />
+                        <ListItem style={styles.list} button component={NavLink} to={"/sijainti"}>
+                            <ListItemIcon> <LocationIcon /> </ListItemIcon>
+                            <ListItemText primary="Sijainti" />
+                        </ListItem>
+                        <Divider />
+                        <ListItem style={styles.list} button component={NavLink} to={"/varaahuolto"}>
+                            <ListItemIcon> <BuildIcon /> </ListItemIcon>
+                            <ListItemText primary="Varaa huolto" />
+                        </ListItem>
+                        <Divider />
+                        <ListItem style={styles.list} button component={NavLink} to={"/omattiedot"}>
+                            <ListItemIcon> <Settings /> </ListItemIcon>
+                            <ListItemText primary="Omat tiedot" />
+                        </ListItem>
+
+                    </List>
+                    <Divider />
+                    <Divider style={{color:bgColors.Blue}}/>
+
+
+                    <div style={{position:'fixed',bottom:0,width:'100%'}}>
+
 const variantIcon = {
   error: ErrorIcon,
   warning: WarningIcon
