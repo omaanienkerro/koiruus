@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import {NavLink} from "react-router-dom";
 import {IconButton} from "@material-ui/core";
+import Huoltohistoria from "./Huoltohistoria";
+import Vikakoodit from "./Vikakoodihistoria";
 
 const styles = {
     card: {
@@ -34,14 +36,16 @@ export class Historia extends React.Component {
                         justify="center"
                         alignItems="center"
                     >
-                        <Typography variant="h4" color="inherit" >
+                        <Typography variant="h4" color="inherit">
                             Historia
                         </Typography>
+
                     </Grid>
 
 
                 </Toolbar>
-
+                <div><Vikakoodit/></div>
+<div><Huoltohistoria/></div>
             </div>
         );
     }

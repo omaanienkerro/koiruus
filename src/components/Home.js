@@ -33,8 +33,8 @@ import amber from "@material-ui/core/colors/amber";
 
 const styles = {
   list: {
-    paddingTop: "3%",
-    paddingBottom: "3%",
+    paddingTop: "3.3%",
+    paddingBottom: "3.3%",
     MozBorderBottomColors: "Cyan"
   },
   fullList: {
@@ -141,7 +141,6 @@ export class Home extends React.Component {
   render() {
     const { classes } = this.props;
     let testvar = true;
-    console.log(this.state.vikakoodit.length);
     return (
       <div>
         <div>
@@ -163,8 +162,7 @@ export class Home extends React.Component {
               </Typography>
             </Grid>
           </Toolbar>
-
-          <List>
+          <List style={{paddingTop:0,paddingBottom:0}}>
             <ListItem
               style={styles.list}
               button
@@ -222,7 +220,8 @@ export class Home extends React.Component {
 
           <div style={{ position: "fixed", bottom: 0, width: "100%" }}>
             {this.state.vikakoodit.length > 0 && (
-              <MySnackbarContentWrapper
+              <MySnackbarContentWrapper style={{margin: "auto",
+                  width: "80%",textDecoration:'none'}} component={NavLink} to={"/historia"}
                 variant={this.state.vikakoodit[1].vakava ? "error" : "warning"}
                 message={
                   this.state.vikakoodit[1].vikakoodi +
@@ -232,17 +231,15 @@ export class Home extends React.Component {
               />
             )}
 
-            <List>
+            <List style={{paddingBottom:0}}>
+              <Divider />
               <ListItem>
                 <ListItemIcon>
                   {" "}
                   <Icon>person</Icon>
                 </ListItemIcon>
                 <ListItemText primary="Käyttäjän nimi" />
-                <ListItemIcon>
-                  {" "}
-                  <Icon>exit_to_app</Icon>
-                </ListItemIcon>
+
               </ListItem>
             </List>
           </div>
