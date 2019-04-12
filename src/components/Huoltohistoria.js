@@ -14,7 +14,6 @@ import Icon from '@material-ui/core/Icon';
 import {NavLink} from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import {IconButton} from "@material-ui/core";
-import ValitseHuoltamo from "./valitsehuoltamo";
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
