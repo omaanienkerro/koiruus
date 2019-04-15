@@ -25,7 +25,7 @@ var bgColors = { "Default": "#81b71a",
 };
 export class Historia extends React.Component {
     render() {
-        var text ="jotain"
+        var text ="jotain";
         return(
             <div>
                 <Toolbar style={{backgroundColor: bgColors.Blue,color: bgColors.white,padding:"4.5%"}}>
