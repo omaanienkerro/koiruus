@@ -8,8 +8,8 @@ import {Sijainti} from "./components/Sijainti";
 import Error from './components/Error';
 
 import {OmatTiedot} from "./components/omattiedot";
-import VaraaHuolto from "./components/varaahuolto";
-import VaraaHuolto2 from "./components/xyz";
+import VaraaHuolto2 from "./components/varaahuolto";
+import VaraaHuolto from "./components/xyz";
 import {Historia} from "./components/historia";
 import Kirjaudu from "./components/Kirjaudu";
 

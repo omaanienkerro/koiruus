@@ -389,7 +389,16 @@ class App extends React.Component {
     };
 
     huoltovahvista = () => {
-        this.props.palautaprops(true);
+        const parentti = {
+            huoltamonID: this.state.huoltamonID,
+            paikkakuntaValue: this.state.paikkakuntaValue,
+            huoltamoValue: this.state.huoltamoValue,
+            haika: this.state.haika,
+            osoite: this.state.osoite,
+            korjattavatkoodit: this.state.korjattavatkoodit,
+            valmis: this.state.valmis,
+        };
+        this.props.palautaprops(parentti);
 
     };
 
@@ -434,6 +443,7 @@ class App extends React.Component {
         const autosuggestProps = {
             renderInputComponent,
         };
+
 
 
 
@@ -515,7 +525,7 @@ class App extends React.Component {
                     inputProps={{huoltamoinputprops,
                         classes,
                         disabled: true,
-                        placeholder: this.state.huoltamoValue,
+                        placeholder: 'Huoltamo',
                         value: this.state.huoltamoValue,
                         onChange: this.onhuoltamoChange,
                     }}
@@ -544,12 +554,12 @@ class App extends React.Component {
                             </button>*/}
 
                             <FormControl fullWidth variant="outlined" className={classes.formControl}>
-{/*                                <InputLabel
+                                <InputLabel
 
                                     htmlFor="outlined-haika-simple"
                                 >
                                     Aika
-                                </InputLabel>*/}
+                                </InputLabel>
                                 <Select
                                     value={this.state.haika}
                                     onChange={this.handleChange}

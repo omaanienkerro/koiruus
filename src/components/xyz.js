@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
-import { Link as RouterLink } from 'react-router-dom'
+import {Link as RouterLink, NavLink} from 'react-router-dom'
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
@@ -111,13 +111,20 @@ class KirjanTiedot extends React.Component{
             haika: '',
             vapaatajat: [],
             osoite: '',
-            valmis: false,
+            valmis: [],
             korjattavatkoodit: [],
+            lapsonen: [
+                {
+                    valmis: false,
+                }
+            ],
     };
     };
 
+
+
     callbakki = (data) => {
-        this.setState({valmis: data});
+        this.setState({lapsonen: data});
     };
 
     callbakki1 = (dataFromChild) => {
@@ -137,7 +144,7 @@ class KirjanTiedot extends React.Component{
 
 
     onnappiklikki = () => {
-        console.log(this.state.valmis);
+        console.log(this.state.lapsonen);
     };
 
 
@@ -163,24 +170,32 @@ class KirjanTiedot extends React.Component{
 
                                                 "Huolto varattu"
 
-                                                : "Valitse huoltamo"
+                                                : "Kiitos varauksesta!"
                                             }
                                         </Typography>
 
                                         <Typography variant="h6" align="center" color="textSecondary" paragraph>
                                         </Typography>
                                         <Divider variant="middle" />
-                                        {this.state.valmis ?
+                                        {this.state.lapsonen.valmis ?
 
-                                            <div><Typography variant="h5" align="center" color="textSecondary" paragraph>
-                                                <br/>Kiitos huollon varauksesta :)))<br/> <br/>Tähän tulee vielä huollon tiedot kun saa koko staten siirrettyä lapsoselta vanhemmalle ;);
+                                            <div>
+                                                <Typography variant="subtitle1" align="center" paragraph>
+                                                {this.state.lapsonen.huoltamoValue}<br/>
+                                                {this.state.lapsonen.osoite +" - "+ this.state.lapsonen.paikkakuntaValue}<br/>
+                                                {this.state.lapsonen.haika}<br/><br/>
+                                                Korjattavat vikakoodit: {this.state.lapsonen.korjattavatkoodit.map(item => (item+","))}
+
+
                                             </Typography>
-                                                <Button variant="contained" color="primary" fullWidth>
-                                                    mee pois t. kassa  /_\
+                                                <Button variant="contained" color="primary" fullWidth component={RouterLink} to={"/"}>
+                                                    Palaa
                                                 </Button></div>
 
                                             : <Huoltamo palautaprops={this.callbakki}/>
                                         }
+
+          {/*                              <Huoltamo palautaprops={this.callbakki}/>*/}
                                         <div className={classes.section4}>
                                             {/*                               <Typography gutterBottom variant="body2" >
                                                     Rekisteröidy
