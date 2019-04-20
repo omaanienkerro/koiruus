@@ -4,7 +4,7 @@ import {Home} from './components/Home';
 
 import {BrowserRouter,Route,Switch } from 'react-router-dom'
 
-import {Sijainti} from "./components/Sijainti";
+import Sijainti from "./components/Sijainti";
 import Error from './components/Error';
 
 import {OmatTiedot} from "./components/omattiedot";

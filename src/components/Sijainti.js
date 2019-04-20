@@ -1,53 +1,61 @@
-import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Toolbar from '@material-ui/core/Toolbar';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Icon from '@material-ui/core/Icon';
-import {NavLink} from "react-router-dom";
-import {IconButton} from "@material-ui/core";
+import React, {Component} from 'react';
+import MapGL, {NavigationControl, Marker} from 'react-map-gl';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import Palkki from './palkki';
 
-const styles = {
-    card: {
-        width: '30px'
-    },
-    media: {
-        height: 140,
-    },}
-var bgColors = { "Default": "#81b71a",
-    "Blue": "#3F51B5",
-    "Cyan": "#37BC9B",
-    "Green": "#8CC152",
-    "Red": "#E9573F",
-    "white": "#fff",
+
+
+const TOKEN = 'pk.eyJ1IjoiY2FyZGlhZ25vc2lzIiwiYSI6ImNqdXEzZnVjbzF0dGE0ZHB3MXhuZGhqamUifQ.237hjiPgDdlIxSg_LVjdTA';
+const navStyle = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    padding: '10px'
 };
-export class Sijainti extends React.Component {
+
+/*TOOD:::
+* tää pitäs saada responsiiviseksi, reactin kirjasto ei tuo valmista ratkaisua
+*
+* https://github.com/uber/react-map-gl/issues/604 Kokeilla tätä uudestaan
+*
+* */
+export default class Map extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            viewport: {
+                latitude: 63.1053423,
+                longitude: 21.5927816,
+                zoom: 14,
+                bearing: 0,
+                pitch: 0,
+                width: 420,
+                height: 800,
+            }
+        };
+    }
     render() {
-        var text ="jotain"
-        return(
-            <div>
-                <Toolbar style={{backgroundColor: bgColors.Blue,color: bgColors.white,padding:"4.5%"}}>
-                    <IconButton component={NavLink} to={"/"}><Icon style={{color:bgColors.white}}>arrow_back</Icon></IconButton>
-                    <Grid
-                        container
-                        direction="column"
-                        justify="center"
-                        alignItems="center"
-                    >
-                        <Typography variant="h4" color="inherit" >
-                            Sijainti
-                        </Typography>
-                    </Grid>
+        const {viewport} = this.state;
+        return (
+            <React.Fragment>
+                <div>
+                    <Palkki otsikko="Auton sijainti"/>
 
-
-                </Toolbar>
-
-            </div>
+                    <MapGL
+                        {...viewport}
+                        mapStyle="mapbox://styles/mapbox/streets-v9"
+                        mapboxApiAccessToken={TOKEN}>
+                        <Marker latitude={63.1053423} longitude={21.5927816} offsetLeft={-20} offsetTop={-10}>
+                            <div><LocationOnIcon
+                                fontSize="large"
+                            /></div>
+                        </Marker>
+                        <div className="nav" style={navStyle}>
+                            <NavigationControl/>
+                        </div>
+                    </MapGL>
+                </div>
+            </React.Fragment>
         );
     }
 }
