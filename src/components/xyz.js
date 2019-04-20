@@ -24,6 +24,8 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Link from '@material-ui/core/Link';
 import Fab from '@material-ui/core/Fab';
+import { sizing } from '@material-ui/system';
+
 
 import Palkki from './palkki';
 import Huoltamo from './huoltamo';
@@ -37,6 +39,7 @@ const styles = theme => ({
         ...theme.mixins.gutters(),
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
+
     },
     appBar: {
         position: 'relative',
@@ -99,12 +102,28 @@ var bgColors = { "Default": "#81b71a",
 
 
 class KirjanTiedot extends React.Component{
-
-    state = {
-        email: '',
-        password: '',
-        showPassword: false,
+    constructor(props) {
+        super(props);
+        this.state = {
+            huoltamonID: '',
+            paikkakuntaValue: '',
+            huoltamoValue: '',
+            haika: '',
+            vapaatajat: [],
+            osoite: '',
+            valmis: false,
+            korjattavatkoodit: [],
     };
+    };
+
+    callbakki = (data) => {
+        this.setState({valmis: data});
+    };
+
+    callbakki1 = (dataFromChild) => {
+        this.setState({ listDataFromChild: dataFromChild });
+    };
+
 
 
     handleChange = prop => event => {
@@ -115,6 +134,11 @@ class KirjanTiedot extends React.Component{
         this.setState(state => ({ showPassword: !state.showPassword }));
     };
 
+
+
+    onnappiklikki = () => {
+        console.log(this.state.valmis);
+    };
 
 
 
@@ -131,17 +155,32 @@ class KirjanTiedot extends React.Component{
                         <Grid container spacing={16}>
                             <Grid item xs={12}>
                                 <div>
-                                    <Paper className={classes.root} elevation={1}>
+                                    <Paper className={classes.root} elevation={1} height="100%">
                                         <Typography variant="h5" align="center" color="textPrimary" paragraph>
-                                            Valitse huoltamo
-                                        </Typography>
 
+
+                                            {this.state.valmis ?
+
+                                                "Huolto varattu"
+
+                                                : "Valitse huoltamo"
+                                            }
+                                        </Typography>
 
                                         <Typography variant="h6" align="center" color="textSecondary" paragraph>
                                         </Typography>
                                         <Divider variant="middle" />
-                                            <Huoltamo/>
+                                        {this.state.valmis ?
 
+                                            <div><Typography variant="h5" align="center" color="textSecondary" paragraph>
+                                                <br/>Kiitos huollon varauksesta :)))<br/> <br/>Tähän tulee vielä huollon tiedot kun saa koko staten siirrettyä lapsoselta vanhemmalle ;);
+                                            </Typography>
+                                                <Button variant="contained" color="primary" fullWidth>
+                                                    mee pois t. kassa  /_\
+                                                </Button></div>
+
+                                            : <Huoltamo palautaprops={this.callbakki}/>
+                                        }
                                         <div className={classes.section4}>
                                             {/*                               <Typography gutterBottom variant="body2" >
                                                     Rekisteröidy
@@ -152,11 +191,11 @@ class KirjanTiedot extends React.Component{
 
 
                                         </div>
-                                        <div className={classes.section3}>
+          {/*                              <div className={classes.section3}>
                                             <Button variant="contained" color="primary" fullWidth>
                                                 Varaa aika
                                             </Button>
-                                        </div>
+                                        </div>*/}
 
                                     </Paper>
                                 </div>

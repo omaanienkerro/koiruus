@@ -12,7 +12,6 @@ import VaraaHuolto from "./components/varaahuolto";
 import VaraaHuolto2 from "./components/xyz";
 import {Historia} from "./components/historia";
 import Kirjaudu from "./components/Kirjaudu";
-import Aloitus from "./components/aloitus";
 
 
 class App extends React.Component{
