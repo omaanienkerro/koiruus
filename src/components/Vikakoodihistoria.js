@@ -49,36 +49,57 @@ const styles = theme => ({
 });
 
 class Vikakoodit extends React.Component {
+state = {
+  vikakoodit: [
+    {
+        vikakoodiId: 604,
+        vkuvaus : "Karvatura kampikammiossa",
+        aika : "22.04.2019 18:33",
+        Vakavuus : "Hätä!",
+    },
+    {
+        vikakoodiId: 808,
+        vkuvaus : "Kissa putkessa",
+        aika : "22.04.2019 18:33",
+        Vakavuus : "Otettava huomioon",
+    },                {
+        vikakoodiId: 999,
+        vkuvaus : "jotain häikkää xD",
+        aika : "22.04.2019 18:33",
+        Vakavuus : "lievä",
+    }
+  ]
+};
+
   render() {
     const { classes } = this.props;
 
+    const vikaList = this.state.vikakoodit.map(function(vikakoodit){
+      return <ExpansionPanel key={vikakoodit.vikakoodiId}>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography className={classes.heading}>Vikakoodi: {vikakoodit.vikakoodiId}</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+              <Typography>
+              Vikakoodi: {vikakoodit.vikakoodiId}<br/>
+                  Aika: {vikakoodit.aika}<br/>
+                  Kuvaus:  {vikakoodit.vkuvaus}<br/>
+                  Vakavuus:   {vikakoodit.Vakavuus}   <br/>
+              </Typography>
+          </ExpansionPanelDetails>
+      </ExpansionPanel>;
+})
     return (
       <React.Fragment>
         <CssBaseline />
 
         <main className={classes.layout}>
+
           <Paper className={classes.paper}>
             <Typography component="h5" variant="h5" align="center">
               Vikakoodit
             </Typography>
-
-            <ExpansionPanel>
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography className={classes.heading}>
-                  Vikakoodi:12312
-                </Typography>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
-                <Typography>
-                  Vikakoodi: 12312
-                  <br />
-                  Aika: 12.3.2019
-                  <br />
-                  Selite: Öljykorkin lika <br />
-                  Vakavuus: Tosi vakava!
-                </Typography>
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
+              {vikaList}
           </Paper>
         </main>
       </React.Fragment>

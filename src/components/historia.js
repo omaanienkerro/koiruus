@@ -8,6 +8,7 @@ import {NavLink} from "react-router-dom";
 import {IconButton} from "@material-ui/core";
 import Huoltohistoria from "./Huoltohistoria";
 import Vikakoodit from "./Vikakoodihistoria";
+import Palkki from "./palkki";
 
 const styles = {
     card: {
@@ -28,24 +29,9 @@ export class Historia extends React.Component {
         var text ="jotain";
         return(
             <div>
-                <Toolbar style={{backgroundColor: bgColors.Blue,color: bgColors.white,padding:"4.5%"}}>
-                    <IconButton component={NavLink} to={"/"}><Icon style={{color:bgColors.white}}>arrow_back</Icon></IconButton>
-                    <Grid
-                        container
-                        direction="column"
-                        justify="center"
-                        alignItems="center"
-                    >
-                        <Typography variant="h4" color="inherit">
-                            Historia
-                        </Typography>
-
-                    </Grid>
-
-
-                </Toolbar>
+<Palkki otsikko="Historia"/>
                 <div><Vikakoodit/></div>
-<div><Huoltohistoria/></div>
+                <div><Huoltohistoria/></div>
             </div>
         );
     }

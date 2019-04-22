@@ -87,7 +87,7 @@ class Huoltohistoria extends React.Component {
         const { classes } = this.props;
 
         const huoltoList = this.state.huolto.map(function(huolto){
-            return <ExpansionPanel>
+            return <ExpansionPanel key={huolto.huolto}>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography className={classes.heading}>Huolto: {huolto.huolto}, {huolto.pvm}</Typography>
                 </ExpansionPanelSummary>
