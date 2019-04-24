@@ -44,14 +44,18 @@ function palkki(props) {
     const { classes } = props;
         return (
             <div className={classes.root}>
-                <AppBar position="static">
+                <AppBar position="static" style={{
+              backgroundColor: bgColors.Blue,
+              color: bgColors.white,
+              padding: "4.5%"
+            }}>
                     <Toolbar variant="regular">
                         <IconButton component={NavLink} to={"/"}>
                             <Icon style={{ color: bgColors.white }}>arrow_back</Icon>
                         </IconButton>
 
 
-                        <Typography variant="h6" color="inherit" className={classes.grow}>
+                        <Typography variant="h4" color="inherit" className={classes.grow}>
                             {props.otsikko}
                         </Typography>
 

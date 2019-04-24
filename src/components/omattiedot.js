@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import {NavLink} from "react-router-dom";
 import {IconButton, Paper} from "@material-ui/core";
+import Palkki from "./palkki"
 
 const styles = {
     card: {
@@ -37,23 +38,10 @@ export class OmatTiedot extends React.Component {
         var text ="jotain"
         return(
             <div>
-
-                <Toolbar style={{backgroundColor: bgColors.Blue,color: bgColors.white,padding:"4.5%"}}>
-                    <IconButton component={NavLink} to={"/"}><Icon style={{color:bgColors.white}}>arrow_back</Icon></IconButton>
-                    <Grid
-                        container
-                        direction="column"
-                        justify="center"
-                        alignItems="center"
-                    >
-                        <Typography variant="h4" color="inherit" >
-                            Omat tiedot
-                        </Typography>
-                    </Grid>
-
-
-                </Toolbar>
+<Palkki otsikko="Omat tiedot"/>
                 <p></p>
+                <IconButton style={{float:"right"}} variant="contained" color="secondary" component={NavLink} to="/kirjaudu"><Icon>exit_to_app</Icon></IconButton>
+                
                 <Grid
                     container
                     direction="column"
@@ -96,8 +84,8 @@ export class OmatTiedot extends React.Component {
                     <br/>
                     <TextField
                         required
-                        id="country"
-                        name="country"
+                        id="register"
+                        name="register"
                         label="Auton rekisterinumero"
                         style={styles.text}
                         autoComplete="billing country"
@@ -107,7 +95,7 @@ export class OmatTiedot extends React.Component {
                     <TextField
                         required
                         id="adornment-password"
-                        name="country"
+                        name="password"
                         type="password"
                         label="Salasana"
                         style={styles.text}
@@ -118,8 +106,8 @@ export class OmatTiedot extends React.Component {
                     <TextField
                         required
                         id="adornment-password"
-                        name="country"
-                        type="password"
+                        name="passwordag"
+                        type="passwordag"
                         label="Salasana uudelleen"
                         style={styles.text}
                         autoComplete="billing country"
@@ -127,8 +115,8 @@ export class OmatTiedot extends React.Component {
                     />
                     <br/>
                     <div style={styles.text}>
-                        <Button variant="contained" color="primary">Tallenna</Button> 	&nbsp;
-                        <Button variant="contained" >Peruuta</Button>
+                        <Button variant="contained" color="primary">Tallenna</Button> 
+               
                     </div>
 
                 </Grid>

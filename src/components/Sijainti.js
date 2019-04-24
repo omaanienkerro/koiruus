@@ -15,7 +15,7 @@ const navStyle = {
 
 /*TOOD:::
 * tää pitäs saada responsiiviseksi, reactin kirjasto ei tuo valmista ratkaisua
-*
+*upd: leveys responsiivinen korkaus ei toiminu vas tavalla
 * https://github.com/uber/react-map-gl/issues/604 Kokeilla tätä uudestaan
 *
 * */
@@ -29,8 +29,8 @@ export default class Map extends Component {
                 zoom: 14,
                 bearing: 0,
                 pitch: 0,
-                width: 420,
-                height: 800,
+                width: "100%",
+                height: 520,
             }
         };
     }
