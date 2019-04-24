@@ -12,6 +12,7 @@ import VaraaHuolto2 from "./components/varaahuolto";
 import VaraaHuolto from "./components/xyz";
 import {Historia} from "./components/historia";
 import Kirjaudu from "./components/Kirjaudu";
+import Rekkaus from "./components/rekkaus";
 import Logg from "./components/kirjaudu2";
 import axios from "axios";
 import { PrivateRoute } from './components/priva';
@@ -84,13 +85,14 @@ class App extends React.Component {
 
       <Switch>
           <Route path={"/"} render={props => <Kirjaudu palautaprops={this.callbakki2}/>} exact/>
-          <Route path={"/etusivu"} component={(props) => <Home state={this.state}/>} exact/>
-          <Route path={"/sijainti"} component={Sijainti}/>
+          <PrivateRoute path={"/etusivu"} component={(props) => <Home state={this.state}/>} exact/>
+          <PrivateRoute path={"/sijainti"} component={Sijainti}/>
           <PrivateRoute path={"/omattiedot"} component={OmatTiedot}/>
-          <Route path={"/varaahuolto"} component={VaraaHuolto}/>
+          <PrivateRoute path={"/varaahuolto"} component={VaraaHuolto}/>
           <PrivateRoute path={"/varaahuolto2"} component={VaraaHuolto2}/>
-          <Route path={"/historia"} component={Historia}/>
+          <PrivateRoute path={"/historia"} component={Historia}/>
           <Route path={"/kirjaudu"} render={props => <Kirjaudu palautaprops={this.callbakki2}/>} />
+          <Route path={"/rekkaus"} render={props => <Rekkaus palautaprops={this.callbakki2}/>} />
           <Route
               path="/login"
               render={props => <Logg {...props} loginUser={this.handlekirjaudu} />}
