@@ -137,8 +137,9 @@ export class Home extends React.Component {
       }
     ]
   };
-
   render() {
+    console.log(this.state)
+
     const { classes } = this.props;
     let testvar = true;
     return (
@@ -238,7 +239,7 @@ export class Home extends React.Component {
                   {" "}
                   <Icon>person</Icon>
                 </ListItemIcon>
-                <ListItemText primary="Käyttäjän nimi" />
+                <ListItemText primary="d" />
 
               </ListItem>
             </List>

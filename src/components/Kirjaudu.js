@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, Redirect } from 'react-router-dom'
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
@@ -24,6 +24,7 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Link from '@material-ui/core/Link';
 import Fab from '@material-ui/core/Fab';
+import axios from "axios";
 
 
 
@@ -119,6 +120,48 @@ class KirjanTiedot extends React.Component{
         this.setState(state => ({ showPassword: !state.showPassword }));
     };
 
+    handlekirjaudu = () => {
+        const user = {
+            email: this.state.email,
+            password: this.state.password,
+        };
+
+        axios
+            .post("http://laravel.outgoingtraffic.bid//api/user/login/", { user })
+            .then(response => {
+                console.log(response);
+                return response;
+            })
+            .then(json => {
+                if (json.data.success) {
+/*
+                    console.log(json.data.data)
+*/
+                    this.props.palautaprops(json.data.data);
+
+                    /*                    alert("Login Successful!");
+                                        const { name, id, email, auth_token } = json.data.data;
+
+                                        let userData = {
+                                            name,
+                                            id,
+                                            email,
+                                            auth_token,
+                                            timestamp: new Date().toString()
+                                        };
+                                        let appState = {
+                                            isLoggedIn: true,
+                                            user: userData
+                                        };
+                                        // save app state with user date in local storage
+                                        localStorage["appState"] = JSON.stringify(appState);
+                                        this.setState({
+                                            isLoggedIn: appState.isLoggedIn,
+                                            user: appState.user
+                                        });*/
+                }
+            })
+    };
 
 
 
@@ -212,7 +255,7 @@ class KirjanTiedot extends React.Component{
                                                 </Link>
                                             </div>
                                             <div className={classes.section3}>
-                                                <Button variant="contained" color="primary" fullWidth>
+                                                <Button variant="contained" color="primary" fullWidth onClick={this.handlekirjaudu}>
                                                     Kirjaudu
                                                 </Button>
                                             </div>
@@ -228,7 +271,11 @@ class KirjanTiedot extends React.Component{
                                 </Grid>
                             </Grid>
                         </div>
-
+                        {
+                            localStorage.getItem('appState')
+                                ? <Redirect to={{ pathname: '/etusivu'}}/>
+                                : null
+                            }
                     </main>
             </React.Fragment>
 
