@@ -92,10 +92,6 @@ class App extends React.Component {
           <PrivateRoute path={"/historia"} component={Historia}/>
           <Route path={"/kirjaudu"} render={props => <Kirjaudu palautaprops={this.callbakki2}/>} />
           <Route path={"/rekkaus"} render={props => <Rekkaus palautaprops={this.callbakki2}/>} />
-          <Route
-              path="/login"
-              render={props => <Logg {...props} loginUser={this.handlekirjaudu} />}
-          />
 
       </Switch>
       </div>
