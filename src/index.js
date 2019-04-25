@@ -13,7 +13,6 @@ import VaraaHuolto from "./components/xyz";
 import {Historia} from "./components/historia";
 import Kirjaudu from "./components/Kirjaudu";
 import Rekkaus from "./components/rekkaus";
-import Logg from "./components/kirjaudu2";
 import axios from "axios";
 import { PrivateRoute } from './components/priva';
 import { createHashHistory } from 'history'
